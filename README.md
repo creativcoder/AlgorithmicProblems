@@ -1,4 +1,5 @@
 AlgorithmicProblems
 ===================
 
-Some algorithmic problems with my solutions
+*Some algorithmic problems with my solutions*
+
