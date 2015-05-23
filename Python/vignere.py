@@ -1,3 +1,4 @@
+#implementing vignere cipher in python
 def rotate(st):
 	a=list(st)
 	temp=a.pop()
