@@ -1,49 +1,54 @@
 #include <iostream>
-#include <string>
-#include <vector>
 #include <algorithm>
+#include <vector>
 
 using namespace std;
 
-class Item {
-public:
-float val;
-float weight;
-float rat;
+class Obj {
+    public:
+        float c;
+        float v;
+        float rat;
 };
 
- bool by_ratio(Item a, Item b) {
- return (a.rat>b.rat?true:false);
- }
 
+bool byRat(Obj a,Obj b)
+    {
+        return (a.rat>b.rat?true:false);
+        }
 
-int main(){
-    int total = 15;
-    int sack = total;
-    int n=5;
-    int val[]= {4,2,2,1,10};
-    int weight[] = {12,1,2,1,4};
-    int max_val = 0;
-    vector<Item> v;
+int main()
+{   int n = 5;
+    int c[] = {12,1,2,1,4};
+    int v[] = {4,2,2,1,10};
+    int w = 15;
+    vector<Obj> vec;
+    for(int i=0;i<n;i++)
+    {
+        Obj o;
+        o.c = c[i];
+        o.v = c[i];
+        o.rat = float(v[i])/float(c[i]);
+        vec.push_back(o);
+    }
+
+    sort(vec.begin(),vec.end(),byRat);
 
     for(int i=0;i<n;i++)
     {
-    Item it;
-    it.val = val[i];
-    it.weight = weight[i];
-    it.rat = val[i]/weight[i];
-    v.push_back(it);
+        if(i==(n-1))
+            {
+                float weight_per = ((float)w*100/(float)vec[i].v);
+            cout<<"Item "<<i<<" "<<weight_per<<"% added "<<endl;
+            w-=weight_per;
+            }
+        else {
+        cout<<"Item "<<i<<" added "<< w-vec[i].c<<endl;
+        w-=vec[i].c;
+}
+
     }
 
-    sort(v.begin(),v.end(),by_ratio);
-    for(vector<Item>::iterator i=v.begin();i!=v.end();i++)
-    max_val += i->val;
-
-
-    vector<Item>::iterator last = v.end();
-    last--;
-
-    // output
-    cout<<max_val-last->val;
-
+//cout<<endl<<"weight is "<<w;
+     return 0;
 }
