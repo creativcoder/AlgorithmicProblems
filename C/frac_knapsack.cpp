@@ -39,16 +39,16 @@ int main()
         if(i==(n-1))
             {
                 float weight_per = ((float)w*100/(float)vec[i].v);
-            cout<<"Item "<<i<<" "<<weight_per<<"% added "<<endl;
-            w-=weight_per;
+            cout<<"Item "<<i+1<<" "<<weight_per<<"% added "<<endl;
+            w-=(weight_per/100)*(float)vec[i].c;
             }
         else {
-        cout<<"Item "<<i<<" added "<< w-vec[i].c<<endl;
+        cout<<"Item "<<i+1<<" added "<< w-vec[i].c<<endl;
         w-=vec[i].c;
 }
 
     }
 
-//cout<<endl<<"weight is "<<w;
+cout<<endl<<"weight remaining is "<<w;
      return 0;
 }
