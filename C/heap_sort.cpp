@@ -1,7 +1,6 @@
 #include <iostream>
 
 void satisfyheap(int[] ,int ,int);
-void satisfyheap(int[] ,int);
 void heapsort(int[],int);
 void buildheap(int[], int);
 
