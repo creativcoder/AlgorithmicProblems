@@ -26,20 +26,21 @@ class Graph {
     }
 
     void add_nodes(){
-        int data;
+
         for(int i=0;i<N;i++)
-            G.push_back(Node(i));
+            {   Node n(i);
+            G.push_back(n);
+
+            }
     }
 
     void add_edge(int src,int dst)
     {
         G[src].adj.push_back(G[dst]);
-        cout<<"Added node: "<<G[src].adj[0].data<<" to "<<G[src].data<<endl;
+        cout<<"Added node"<<endl;
     }
-};
 
-
-void dfs_traverse(Graph G, Node startNode) {
+    void dfs_traverse(Node startNode) {
     stack<Node> holder;
     holder.push(startNode);
     startNode.visited = true;
@@ -52,10 +53,12 @@ void dfs_traverse(Graph G, Node startNode) {
        if(!current.adj[i].visited)
       { holder.push(current.adj[i]);
        current.adj[i].visited = true;
+       cout<<"Visited node: "<<current.adj[i].data;
        }
     }
     }
 }
+};
 
 
 int main()
@@ -76,6 +79,9 @@ int main()
     cin>>src>>dst;
     my_graph.add_edge(src,dst);
     }
+
+    //cout<<my_graph.G[0].adj[];
+    my_graph.dfs_traverse(my_graph.G[1]);
 
     return 0;
 }
