@@ -19,23 +19,22 @@ class Graph {
     public:
     vector<Node> G;
     int N;
+
     Graph(int n_nodes)
     {
         N = n_nodes;
     }
+
     void add_nodes(){
         int data;
         for(int i=0;i<N;i++)
-        {cout<<"Enter node data"<<i<<endl;
-        cin>>data;
-
-        G.push_back(Node(data));}
-
+            G.push_back(Node(i));
     }
+
     void add_edge(int src,int dst)
     {
         G[src].adj.push_back(G[dst]);
-        cout<<"Added successfully node: "<<G[src].adj[0].data;
+        cout<<"Added node: "<<G[src].adj[0].data<<" to "<<G[src].data<<endl;
     }
 };
 
@@ -61,15 +60,22 @@ void dfs_traverse(Graph G, Node startNode) {
 
 int main()
 {
-    Graph my_graph(5);
+    int V,E;
+    int src,dst;
+    cout<<"Vertex Count";
+    cin>>V;
+    cout<<"Edge Count";
+    cin>>E;
+    Graph my_graph(V);
+    cout<<"Graph Initialized with: "<<V<<" vertices"<<endl;
     my_graph.add_nodes();
 
-    my_graph.add_edge(0,3);
-    my_graph.add_edge(2,4);
-    my_graph.add_edge(1,4);
-    my_graph.add_edge(2,3);
 
-
+    for(int i=0;i<E;i++){
+    cout<<"Input : Source -> Destination"<<endl;
+    cin>>src>>dst;
+    my_graph.add_edge(src,dst);
+    }
 
     return 0;
 }
