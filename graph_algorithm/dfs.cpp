@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <stack>
+
 using namespace std;
 
 class Node {
@@ -37,6 +39,13 @@ class Graph {
     }
 };
 
+void dfs_traverse(Graph G, Node startNode) {
+    stack<Node> holder;
+    holder.push(startNode);
+    startNode.visited = true;
+
+}
+
 
 int main()
 {
@@ -47,6 +56,8 @@ int main()
     my_graph.add_edge(2,4);
     my_graph.add_edge(1,4);
     my_graph.add_edge(2,3);
+
+
 
     return 0;
 }
