@@ -39,11 +39,23 @@ class Graph {
     }
 };
 
+
 void dfs_traverse(Graph G, Node startNode) {
     stack<Node> holder;
     holder.push(startNode);
     startNode.visited = true;
+    while(!holder.empty()) {
+    Node current = holder.top();
+    holder.pop();
 
+    for(int i=0;i<current.adj.size();i++)
+    {
+       if(!current.adj[i].visited)
+      { holder.push(current.adj[i]);
+       current.adj[i].visited = true;
+       }
+    }
+    }
 }
 
 
