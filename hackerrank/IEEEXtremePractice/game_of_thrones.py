@@ -1,4 +1,6 @@
-str = 'cdcdcdcdeeeef'
+#str = 'cdcdcdcdeeeef'
+str = 'eee'
+#str = 'aabb'
 
 unique_set = []
 
@@ -11,25 +13,42 @@ def extract_unique(input):
 
 extract_unique(str)
 
-print "unique elements are", unique_set
+print "Unique elements are", unique_set
 
-def check_palin(inp):
-	if (len(inp)%2 == 0):
-		for i in unique_set:
-			if not (inp.count(i)%2 == 0):
-				return False
-			return True
-	else:
-		for i in unique_set:
+# Testcode
+def test_eval_odd_inputs(string):
+	for i in unique_set:
 			if not (inp.count(i)%2 == 0):
 				return False
 			if inp.count(i) == 1:
 				single_letter = True
 
 
-print(check_palin(str))
+def isOdd(string):
+	return not (len(string)%2==0)
 
-# print unique_set
+def letters_even(string):
+	for i in unique_set:
+		if (string.count(i)%2 == 0):
+			return True
+		else:
+			return False
 
-# def check_palin():
-# 	if(che)
+def check_palin2(string,single_letter):
+	# if string contains the same letters
+	if(len(string) == string.count(string[0])):
+		print "Yes"
+		return False
+
+	for i in unique_set:
+		if string.count(i)==1:
+			single_letter = True
+	if (single_letter and isOdd(string)):
+		if(letters_even(string)):
+			print "Yes"
+			palindrome = True
+		else:
+			print "No"
+			palindrome = False
+
+check_palin2(str,single_letter)
