@@ -1,4 +1,4 @@
-http://codeforces.com/problemset/problem/71/A
+#http://codeforces.com/problemset/problem/71/A
 
 T = int(raw_input())
 
