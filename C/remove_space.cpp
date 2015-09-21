@@ -8,14 +8,17 @@ using namespace std;
 int main() {
     string s = "   This    is  a string               which       has very    much spaces in   it.";
     
+    fstream fp;
+    fp.open("result.txt",ios::out);
+    
     for(int i=1;i<s.length();i++)
     {
         if(s[i-1]!=' ' && s[i]==' ')
-            {cout<<s[i-1]<<s[i];}
+            {fp<<s[i-1]<<s[i];}
         else if(s[i-1]==' ' && s[i]==' ')
             continue;
         else if(s[i-1]!=' ')
-            cout<<s[i-1];
+            fp<<s[i-1];
     }
     
 }
