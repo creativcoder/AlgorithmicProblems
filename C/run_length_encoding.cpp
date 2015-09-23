@@ -1,42 +1,36 @@
 #include <iostream>
 using namespace std;
 
-int arr[50]={0};
+void run_encode(string message)
+{   int i=0,j,cnt=0;
+    while(i!=message.length())
+    {
 
-void append(int arr[],int pos,int num)
+        j=i;
+        while(message[i]==message[j])
+        {cnt++;j++;}
+        if (cnt==1) {cout<<message[i];}else
+        cout<<cnt<<message[i];
+        i=j;
+        cnt=0;
+    }
+}
+
+void run_decode()
 {
-arr[pos] = num;
-}
-
-void compress(string s )
-{
-int i=-1,j,cnt=0,ind=-1;
-char cur=s[0];
-while(i!=s.length()) {
-i++;
-while(s[i]==cur)
-{
-cnt++;
-s.erase(i,1);
-if(s[i] != s[i+1]) break;
-}
-append(arr,++ind,cnt);
-cur=s[i];
-cnt=0;
-}
-
-for(int i=0;i<s.length();i++)
-
-{   if(arr[i]==0)
-    continue;
-    cout<<arr[i]<<s[i];
-}
-
+    // to implement
 }
 
 int main()
 {
-    string s = "ttttttthhhhhiiiiisssaaaavvvvveeerrryyylooongwwwword";
-    compress(s);
+    // example string 1
+    string s = "WWWWWWWVWWWBBBBBBBBBCCCCDDD";
+    // example string 2
+    string s2 = "WVBCD";
+    
+    run_encode(s);
+    cout<<endl;
+    run_encode(s2);
+
     return 0;
 }
