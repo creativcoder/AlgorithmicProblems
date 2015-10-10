@@ -1,18 +1,24 @@
 CC=gcc
 CFLAGS=-Wall -g
 SRC_MAIN=./src/main.c
-BIN=basex
+SRC_DEPS=./src/convert.c
+SRC_OBJ=convert.o
+BIN=./build/basex
 LIBS=-lm
 
-compile: main.c convert.o
-	$(CC) $(SRC) -o basex
+compile: src/main.c $(SRC_OBJ)
+	mkdir build
+	gcc $(SRC_MAIN) $(SRC_DEPS) -o $(BIN) $(LIBS)
 
-convert.o: src/convert.c src/convert.h
-	$(CC) src/convert.c -c
+$(SRC_OBJ): src/convert.c src/convert.h
+	$(CC) src/convert.c -c -lm
 
+clean: 
+	rm -rf build 
+	rm src/*.o *.o
 
 install:
-	cp basex /usr/local/bin
+	sudo cp $(BIN) /usr/bin
 
 purge:
-	rm /usr/local/bin/basex
+	sudo rm /usr/bin/basex
