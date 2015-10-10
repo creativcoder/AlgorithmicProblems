@@ -21,13 +21,13 @@ int main(int argc, char const *argv[])
 	long int to_convert = atoi(argv[1]);
 	long int from = atoi(argv[2]);
 	long int to = atoi(argv[3]);
-	
+
 	if(!(to && from && to_convert)) {
 		fprintf(stderr, "%s\n",ERR_ARGS_PARSE);
 		return -2;
 	}
 	else {
-		//convert_base(to_convert,from,to);
+		convert_base(to_convert,from,to);
 	}
 	return 0;
 }
