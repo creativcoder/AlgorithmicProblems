@@ -3,12 +3,16 @@ basex - a unix utility to convert any number from base y to x
 Example :
 1010 (base 2) = 10 (base 10)
 
-Getting up and running :
+Getting up and running ( cd into directory containing makefile ):
 `make`
 `make install`
-On shell:
-`awesome@shell::~/basex 123`
+
+After that ( basex <number> <from> <to> ):
+`awesome@shell::~/basex 1101 2 10`
+
+To issue a re-build:
+`make clean`
+`make install`
 
 Uninstall:
-cd into directory and issue
 `make purge`
