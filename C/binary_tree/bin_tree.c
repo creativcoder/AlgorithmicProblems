@@ -9,26 +9,41 @@ struct node *right;
 
 node *root=NULL;
 
-void delete(node *root) {}
+node* create_node(int);
+void del(node *root);
+void inorder(node *root);
+void preorder(node *root);
+void postorder(node *root);
 
-void inorder(node *root) {}
-void preorder(node *root) {}
-void postorder(node *root) {}
-
-void insert(node *root,int data) {
-  node *temp = (node*)malloc(sizeof(node));
-  temp->left=NULL;
-  temp->right=NULL;
-  if(root!=NULL) {
-  if(root->data<=data) insert(root->left,data);
-  else insert(root->right,data);
+void ins(node *root,int data) {
+  if(root==NULL)
+  { 
+    root = (node*)malloc(sizeof(node));
+    root=create_node(data);
   }
-  else { temp->data = data;
-  root = temp;
+  else if(root!=NULL && root->data >= data)
+    ins(root->right,data);
+  else ins(root->left,data);
+}
+
+void preorder(node *root) {
+  if(root!=NULL){
+    preorder(root->left);
+    printf("%d\n",root->data);
+    preorder(root->right);
   }
 }
 
+node* create_node(int data){
+  node *temp = (node*)malloc(sizeof(node));
+  temp->data = data;
+  temp->left = NULL;
+  temp->right = NULL;
+  return temp;
+}
+
 int main(int argc,char *argv[]) {
-insert(root,34);
-insert(root,67);
+ins(root,2457);
+printf("%p",root);
+
 }
