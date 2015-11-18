@@ -1,44 +1,30 @@
 #include <stdio.h>
-#include <stdlib.h>
-
-int index1,index2;
-int cal(int arr[],int len,int sum)
-{
-  
-int i,j,flag=0;
-for(i=0;i<len;i++)
-    for(j=i+1;j<len;j++)
-   if(arr[i]+arr[j]==sum)
-{
-flag=1;index1=i+1;index2=j+1;return flag;
-}
-return flag;
-}
-
+int cas = 0,j,i,T,C,flag=0,I,price[2001],sp=0,lp=0;
 int main()
 {
-    int c,t,i,flag;
-    int *items;
-    int m=0,n,j,times;
-    FILE *fp,*out;
-    fp=fopen("large.in","r");
-    out=fopen("output_large.out","w");
-    fscanf(fp,"%d",&t);
-int f=1;
-    while(m!=t)
-    {
-            fscanf(fp,"%d",&c);
-            fscanf(fp,"%d",&i);
-            items=(int*)calloc(i,sizeof(int));
-            for(j=0;j<i;j++)
-                fscanf(fp,"%d",(items+j));
-            if(cal(items,i,c))
-    {
-        fprintf(out,"Case #%d: %d %d\n",m+1,index1,index2);
-    }
-        m++;
-    }
-   return 0;
-  }
-   
-
+FILE *inp;
+FILE *out;
+inp = fopen("A-large-practice.in","r");
+out = fopen("A-large-practice.out","w");
+fscanf(inp,"%d",&T);
+while(T--){
+fscanf(inp,"%d",&C);
+fscanf(inp,"%d",&I);
+int temp = I;
+int k=0;
+while(k<I)
+	{	
+	fscanf(inp,"%d",&price[k]);
+	k++;
+	}
+	
+	for(i=0;i<I;i++)
+	{	for(j=i+1;j<I;j++){
+		if((price[i]+price[j])==C)
+			{sp = i;
+			lp = j;break;}
+	}
+	}
+	fprintf(out,"Case #%d: %d %d\n",++cas,sp+1,lp+1 );
+}
+}
