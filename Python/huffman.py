@@ -6,6 +6,9 @@ class Tree(object):
         self.right = None
         self.encoding = None
 
+    def is_leaf(self):
+        return self.left == None and self.right == None
+
     def __str__(self):
         return "   ({}{})\n/\t\\\n{}\t{}\n".format(self.data,self.freq,self.left,self.right)
 
@@ -34,6 +37,7 @@ class Forest(object):
     def assign_codeword(self):
         pass
 
+
 def test_case():
     freq_list = {
     'a':13,
@@ -45,7 +49,7 @@ def test_case():
     forest = Forest(freq_list)
     forest.sort_nodes()
     forest.make_trees()
-    # forest.assign_codeword()
+    forest.assign_codeword()
 
 if __name__=='__main__':
     test_case()
