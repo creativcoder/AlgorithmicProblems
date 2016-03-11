@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+html,body {
+	margin: 0px;
+}
+canvas {
+	display: block;
+}
+</style>
+</head>
+<body>
+<canvas id="canvas">
+	
+</canvas>
+<script>
+	function init() {
+	var canvas = document.getElementById('canvas'),
+	context = canvas.getContext('2d'),
+	width = canvas.width = window.innerWidth,
+	height = canvas.height = window.innerHeight;
+
+	context.translate(0,height/2);
+	context.scale(1,-1);
+
+	// plotting a sin wave
+	function plot_sin(context) {
+	for(var angle = 0;angle < Math.PI * 2;angle += .01) {
+		// console.log(Math.sin(angle));
+		var x = angle*100,
+			y = Math.sin(angle) * 100;
+		context.fillRect(x,y,2,2);
+	}
+}
+	// plotting a cos wave
+	function plot_cos(context) {
+	for(var angle = 0;angle < Math.PI * 2;angle += .01) {
+		// console.log(Math.sin(angle));
+		var x = angle*100,
+			y = Math.cos(angle) * 100;
+		context.fillRect(x,y,2,2);
+	}
+}
+	function plot_tan(context) {
+	// plotting a tan wave
+	for(var angle = 0;angle < Math.PI * 2;angle += .01) {
+		var x = angle*100,
+			y = Math.tan(angle) * 100;
+			context.fillRect(x,y,2,2);
+		}
+	}
+	plot_sin(context);
+	plot_cos(context);
+	//plot_tan(context);
+}
+window.onload = init;
+</script>
+</body>
+</html>
