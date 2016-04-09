@@ -45,6 +45,24 @@ class Node(object):
 				self.right.preorder(cache)
 		return cache
 
+	def postorder(self,cache):
+		if self:
+			if self.left:
+				self.left.preorder(cache)
+			if self.right:
+				self.right.preorder(cache)
+			cache.append(self.value)
+		return cache
+
+	def inorder(self,cache):
+		if self:
+			if self.left:
+				self.left.inorder(cache)
+			cache.append(self.value)
+			if self.right:
+				self.right.inorder(cache)
+		return cache
+
 class Tree(object):
 	def __init__(self):
 		self.root = None
@@ -65,19 +83,19 @@ class Tree(object):
 	def preorder(self,cache):
 		self.root.preorder(cache)
 
-	def postorder(self):
-		self.root.postorder()
+	def postorder(self,cache):
+		self.root.postorder(cache)
 
-	def inorder(self):
-		self.root.inorder()
+	def inorder(self,cache):
+		self.root.inorder(cache)
 
 if __name__=='__main__':
 	tree = Tree()
-	tree.insert(376)
-	tree.insert(69)
-	tree.insert(239)
-	tree.insert(212439)
+	tree.insert(1)
+	tree.insert(2)
+	tree.insert(3)
+	tree.insert(4)
 	
 	cache = []
-	tree.preorder(cache)
+	tree.postorder(cache)
 	print(cache)

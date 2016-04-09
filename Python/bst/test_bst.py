@@ -1,7 +1,5 @@
 from bst import Tree, Node
 
-cache = []
-
 def setUp():
 	return Tree()
 
@@ -22,7 +20,8 @@ def test_tree_find():
 	assert tree.find(353) == True
 	assert tree.find(56) == True
 
-def test_predroder():
+def test_preorder():
+	cache = []
 	tree = setUp()
 	tree.insert(376)
 	tree.insert(69)
@@ -30,3 +29,23 @@ def test_predroder():
 	tree.insert(212439)
 	tree.preorder(cache)
 	assert cache == [376, 69, 239, 212439]
+
+def test_postorder():
+	cache = []
+	tree = setUp()
+	tree.insert(2)
+	tree.insert(4)
+	tree.insert(6)
+	tree.insert(8)
+	tree.postorder(cache)
+	assert cache == [4, 6, 8, 2]
+
+def test_inorder():
+	cache = []
+	tree = setUp()
+	tree.insert(1)
+	tree.insert(3)
+	tree.insert(5)
+	tree.insert(7)
+	tree.inorder(cache)
+	assert cache == [1, 3, 5, 7]
