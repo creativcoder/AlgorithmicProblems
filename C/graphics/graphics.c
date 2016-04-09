@@ -70,6 +70,10 @@ void bresenham(int xa,int ya,int xb,int yb) {
 	}
 }
 
+void midpoint(int rad,cent_x,cent_y) {
+
+}
+
 void window_wait() {
 	char c;
 	while(1) {
