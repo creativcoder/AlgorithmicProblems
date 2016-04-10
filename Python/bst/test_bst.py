@@ -1,4 +1,5 @@
 from bst import Tree, Node
+import pytest
 
 def setUp():
 	return Tree()
@@ -16,9 +17,9 @@ def test_tree_find():
 	tree.insert(645)
 	tree.insert(353)
 	tree.insert(56)
-	assert tree.find(645) == True
-	assert tree.find(353) == True
-	assert tree.find(56) == True
+	assert tree.find(645).value == 645
+	assert tree.find(353).value == 353
+	assert tree.find(56).value == 56
 
 def test_preorder():
 	cache = []
@@ -49,3 +50,11 @@ def test_inorder():
 	tree.insert(7)
 	tree.inorder(cache)
 	assert cache == [1, 3, 5, 7]
+
+def test_duplicate():
+	tree = setUp()
+	tree.insert(24)
+	tree.insert(454)
+	tree.insert(2354)
+	with pytest.raises(ValueError):
+		tree.insert(24)

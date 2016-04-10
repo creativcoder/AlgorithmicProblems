@@ -9,6 +9,7 @@ Operations:
 *Preorder
 *PostOrder
 *Inorder
+*Deletion
 
 
 Tests reside in `test_bst.py`
