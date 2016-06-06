@@ -12,9 +12,8 @@ canvas {
 </style>
 </head>
 <body>
-<canvas id="canvas">
-	
-</canvas>
+<canvas id="canvas"></canvas>
+
 <script>
 	function init() {
 	var canvas = document.getElementById('canvas'),
@@ -27,8 +26,7 @@ canvas {
 
 	// plotting a sin wave
 	function plot_sin(context) {
-	for(var angle = 0;angle < Math.PI * 2;angle += .01) {
-		// console.log(Math.sin(angle));
+	for(var angle = 0; angle < Math.PI * 2; angle += .01) {
 		var x = angle*100,
 			y = Math.sin(angle) * 100;
 		context.fillRect(x,y,2,2);
@@ -52,10 +50,11 @@ canvas {
 		}
 	}
 	plot_sin(context);
-	plot_cos(context);
+	//plot_cos(context);
 	//plot_tan(context);
 }
 window.onload = init;
 </script>
+
 </body>
 </html>

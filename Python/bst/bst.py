@@ -18,6 +18,20 @@ class Node(object):
 		else:
 			return False
 
+	def min_child(self):
+		if self.is_leaf():
+			return None
+		elif self.has_one_child()[1]:
+			return self.has_one_child()[0]
+		else:
+			return self.left if self.left.value < self.right.value else self.right
+
+	def is_internal(self):
+		if self.left and self.right:
+			return True
+		else:
+			return False
+
 	def insert(self,data):
 		if self.value == data:
 			raise ValueError('A possible duplicate data')
@@ -88,6 +102,8 @@ class Node(object):
 			elif node.has_one_child()[1]:
 				((side,child),_) = node.has_one_child()
 				setattr(node,side,child)
+			else:
+				min_child = node.min_child()
 
 
 class Tree(object):
