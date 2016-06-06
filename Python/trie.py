@@ -1,34 +1,59 @@
-class Node:
-    def __init__():
-        self.data = data
-        
 
-class Graph:
-    def __init__(self,count):
-        self.count = count
-        self.dict = {}
-    def add_vertex(self,vex):
-        if isinstance(vex,list):
-            for i in vex:
-                self.dict.update({i:[]})
-        elif len(vex) == 1 and isinstance(vex,str):
-                self.dict.update({vex:[]})
-        else:
-            Raise('Malformed Vertex Exception')
+def char_to_index(ch):
+    return ord(ch) - ord('a')
 
-    def add_edge(self,src,dst):
-        if self.dict.has_key(src):
-            self.dict[src].append(dst)
-    def show_edges(self):
-        return [(i,self.dict[i]) for i in self.dict.keys()]
+class Node(object):
+    def __init__(self):
+        self.val = None
+        self.children = [None for i in range(26)]
+        self.is_leaf = False
+        self.has_child = False
 
-class Trie():
-    def __init__(self,words):
-        pass
+    def __str__(self):
+        return str(self.val)
 
-g = Graph(4)
-g.add_vertex(['a','b','c','d'])
-g.add_edge('c','d')
-g.add_edge('c','a')
-g.add_edge('c','b')
-print g.show_edges()
+    def insert(self, str):
+        crawler = self
+        for i in str:
+            idx = char_to_index(i)
+            if crawler.children[idx] is None:
+                crawler.children[idx] = Node()
+                crawler.has_child = True
+                crawler.children[idx].val = i
+                crawler = crawler.children[idx]
+            else:
+                crawler = crawler.children[idx]
+        crawler.is_leaf = True
+
+    def contains(self, string):
+        crawler = self
+        for i in string:
+            if crawler is not None:
+                crawler = crawler.children[char_to_index(i)]
+            else: return "Does not Exist in Trie"
+        if crawler.is_leaf:
+            return "Exists in Trie"
+
+    def auto_complete(self, fragment):
+        prefix = ""
+        crawler = self
+        for i in fragment:
+            if crawler is not None and not crawler.is_leaf:
+                crawler = crawler.children[char_to_index(i)]
+        reachable_nodes = [i for i in crawler.children if i is not None]
+        for i in reachable_nodes:
+            print fragment + str(i.val)
+
+if __name__=='__main__':
+    root = Node()
+    root.insert("bar")
+    root.insert("baz")
+    root.insert("bam")
+    root.insert("baq")
+    root.insert("ban")
+    root.insert("bus")
+
+    print("bar", root.contains("bar"))
+    print("foo", root.contains("foo"))
+    root.auto_complete("ba")
+
